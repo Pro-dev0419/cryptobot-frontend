@@ -1,0 +1,53 @@
+/* @import url(''); */
+@import './global.scss';
+@import './general.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Chakra Petch', sans-serif;
+}
+@layer utilities {
+    .pc {
+        @apply md:flex hidden;
+    }
+    .mobile {
+        @apply md:hidden flex;
+    }
+    .menu_header {
+        @apply text-[.65625rem] text-[#ffffff4d] font-semibold p-4 pb-2;
+    }
+    .menu_item {
+        @apply text-sm relative py-[0.1rem] px-4 text-[#ffffff7f] hover:text-white flex items-center transition-all duration-200 ease-in-out justify-start;
+    }
+    .menu_link {
+        @apply flex items-center w-full;
+    }
+    .sub_menu_link {
+        @apply flex items-center ml-14 text-[#ffffff7f] hover:text-white;
+    }
+    .aside {
+        @apply fixed w-[16.875rem] top-13 z-[1010] left-0 bottom-0 overflow-y-auto transition-all duration-500 ease-out;
+    }
+    .app {
+        height: calc(100vh - 3.25rem);
+        @apply flex-1 md:ml-[16.875rem] p-4 transition-all duration-100 ease-out;
+    }
+    .card_title_1 {
+        @apply font-semibold uppercase text-xs;
+    }
+    .row {
+        @apply grid gap-4 min-w-[280px];
+    }
+    .cols-4 {
+        @apply grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4;
+    }
+    .cols-2 {
+        @apply grid grid-cols-1 xl:grid-cols-2 gap-4;
+    }
+    .center {
+        @apply flex justify-center items-center;
+    }
+}
