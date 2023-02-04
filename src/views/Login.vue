@@ -7,9 +7,9 @@
         <div class="w-full md:mt-0 sm:max-w-lg xl:p-0">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <p v-if="errors.length">
-                    <ul>
-                        <li v-for="error in errors" class="text-red-500">{{ error }}</li>
-                    </ul>
+                <ul>
+                    <li v-for="error in errors" class="text-red-500">{{ error }}</li>
+                </ul>
                 </p>
                 <form class="space-y-4 md:space-y-6" action="#" @submit="handleSubmit">
                     <div>
@@ -55,7 +55,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import axios from "axios";
+import { useAuthStore } from '@/stores'
 
 export default defineComponent({
     name: "Login",
@@ -73,18 +73,22 @@ export default defineComponent({
             console.log(email.value, password.value);
 
             if (email.value && password.value) {
-                axios.post("http://localhost:3003/api/auth/signin", {email: email.value, password: password.value})
-                .then(response => {
-                    console.log(response);
-                    if(response.statusText =="OK"){
-                        window.location.href = 'http://localhost:8080/dashboard';
-                    }
+                // axios.post("http://localhost:3003/api/auth/signin", {email: email.value, password: password.value})
+                // .then(response => {
+                //     console.log(response);
+                //     if(response.statusText =="OK" && response.data.accessToken){
+                //         localStorage.setItem('user', JSON.stringify('bar'+response.data.accessToken));
+                //         window.location.href = 'http://localhost:8080/dashboard';
+                //     }
 
-                })
-                .catch(error => {
-                console.error("There was an error!", error);
-                });
-                return true;
+                // })
+                // .catch(error => {
+                // console.error("There was an error!", error);
+                // });
+                // return true;
+                const authStore = useAuthStore();
+                return authStore.login(email.value, password.value)
+                    .catch(error => console.error("There was an error!", error));
             }
 
             errors.value = [];

@@ -66,6 +66,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { router } from "@/router";
 import axios from "axios";
 
 export default defineComponent({
@@ -86,7 +87,10 @@ export default defineComponent({
             
             if (email.value && password.value && name.value) {
                 axios.post("http://localhost:3003/api/auth/signup", {name: name.value, email: email.value, password: password.value})
-                .then(response => {console.log(response)})
+                .then(response => {
+                    console.log(response);
+                    window.location.href = "/login"
+                })
                 .catch(error => {
                 console.error("There was an error!", error);
                 });

@@ -1,3 +1,4 @@
+
 const getPath = (page: string[]) =>
   page
     .map((path) => {
