@@ -25,11 +25,11 @@
             </button>
 
             <div>
-                <router-link v-if="data.user.email" to="#" class="flex items-center">
-                    <img :src="'src/assets/image/avatars/'+data.user.avatar" alt="profile picture" class="h-8 w-8 rounded-full mr-3" />
-                    <span class="text-[15px] font-medium pc">{{ data.user.email }}</span>
+                <router-link v-if="data?.user.email" to="#" class="flex items-center">
+                    <img :src="'../src/assets/image/avatars/'+data?.user.avatar" alt="profile picture" class="h-8 w-8 rounded-full mr-3" />
+                    <span class="text-[15px] font-medium pc">{{ data?.user.email }}</span>
                 </router-link>
-                <router-link v-if="!data.user.email" to="/login" class="flex items-center">
+                <router-link v-if="!data?.user.email" to="/login" class="flex items-center">
                     <span class="text-[15px] font-medium pc mr-1">login</span>
                 </router-link>
             </div>

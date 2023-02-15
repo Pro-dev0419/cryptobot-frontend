@@ -55,7 +55,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { useAuthStore } from '@/stores'
+import { AuthPayload } from '@/types';
+import { useAuthStore } from '@/stores';
+import { useUserService } from '@/shared/userService';
+import { useBotStore } from '@/stores/ftbotwrapper';
+
 
 export default defineComponent({
     name: "Login",
@@ -68,9 +72,12 @@ export default defineComponent({
         const email = ref(null);
         const password = ref(null);
 
+        const errorMessage = ref<string>("");
+        const botStore = useBotStore();
+        const userService = useUserService(botStore.nextBotId);
+
         const handleSubmit = (e: any) => {
             e.preventDefault();
-            console.log(email.value, password.value);
 
             if (email.value && password.value) {
                 // axios.post("http://localhost:3003/api/auth/signin", {email: email.value, password: password.value})
@@ -88,7 +95,43 @@ export default defineComponent({
                 // return true;
                 const authStore = useAuthStore();
                 return authStore.login(email.value, password.value)
-                    .catch(error => console.error("There was an error!", error));
+                    .then((res) => {
+                        let data = JSON.parse(JSON.stringify(res));
+                        console.log("user:", + data);
+                        const auth = ref<AuthPayload>({
+                            botName: "Athenea1",
+                            url: data.user.api_url_bot1,
+                            username: data.user.api_username_bot1,
+                            password: data.user.api_password_bot1
+                        });
+                        userService.login(auth.value)
+                            .then(() => {
+                                const botId = botStore.nextBotId;
+                                botStore.addBot({
+                                    botName: auth.value.botName,
+                                    botId,
+                                    botUrl: auth.value.url,
+                                });
+                                if (botStore.selectedBot === "") {
+                                    console.log(`selecting bot ${botId}`);
+                                    botStore.selectBot(botId);
+                                }
+                                botStore.allRefreshFull();
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                                if (error.response && error.response.status === 401) {
+                                    errorMessage.value =
+                                        "Connected to bot, however Login failed, Username or Password wrong.";
+                                }
+                                else {
+                                    errorMessage.value = `Login failed.
+                                                        Please verify that the bot is running, the Bot API is enabled and the URL is reachable.
+                                                        You can verify this by navigating to ${auth.value.url}/api/v1/ping to make sure the bot API is reachable`;
+                                }
+                                console.error(errorMessage.value);
+                            });
+                    }).catch(error => console.error("There was an error!", error));
             }
 
             errors.value = [];

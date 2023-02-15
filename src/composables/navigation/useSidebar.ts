@@ -14,11 +14,12 @@ export const MenuList = [
                 hasSub: true,
                 show: ref(false),
                 subs: [
-                    { name: "Inbox", link: "/" },
-                    { name: "Compose", link: "/" },
-                    { name: "Detail", link: "/" },
+                    { name: "Binance", link: "/apikeys/binance" },
+                    { name: "Kraken", link: "/apikeys/kraken" },
+                    { name: "Kucoin", link: "/apikeys/kucoin" },
                 ],
             },
+            { name: "Verification (KYC)", icon: "las la-user-check", link: "/verification" },
         ],
     },
     {
