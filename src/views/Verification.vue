@@ -2,115 +2,193 @@
     <DefaultLayout>
         <h2 class="text-3xl mb-4">Verification</h2>
         <Card class="!h-fit py-1">
-            <Wizard navigable-tabs :doneButton="{ text: 'Submit' }" :custom-tabs="[
-                {
-                    title: 'Registration as private user',
-                },
-                {
-                    title: 'Address',
-                },
-                {
-                    title: 'Documentation',
-                }
-            ]" :beforeChange="onTabBeforeChange" @change="onChangeCurrentTab" @complete:wizard="wizardCompleted">
-                <div v-if="currentTabIndex === 0">
-                    <h4 class="text-xl">Personal Information</h4>
-                    <p>Insert your personal information</p>
-                    <div class="grid grid-cols-2 gap-4 mt-4">
-                        <div>
-                            <label for="first-name"
-                                class="block mb-2 text-sm font-medium text-gray-900 text-white">First
-                                Name
-                                <span class="text-red-500">*</span></label>
-                            <input type="text" name="first-name" id="first-name"
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 text-white">Last
-                                Name
-                                <span class="text-red-500">*</span></label>
-                            <input type="text" name="last-name" id="last-name"
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="country" class="block mb-2 text-sm font-medium text-gray-900 text-white">Country
-                                of residence
-                                <span class="text-red-500">*</span></label>
-                            <select
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                                <option selected>Choose a country</option>
-                                <option class="bg-red" value="US">United States</option>
-                                <option class="bg-red" value="CA">Canada</option>
-                                <option class="bg-red" value="FR">France</option>
-                                <option class="bg-red" value="DE">Germany</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 text-white">Gender
-                                <span class="text-red-500">*</span></label>
-                            <select
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                                <option selected>Male</option>
-                                <option class="bg-red" value="US">Female</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div v-if="currentTabIndex === 1">
-                    <h4 class="text-xl">Address of residence</h4>
-                    <p>Enter your address</p>
-                    <div class="grid grid-cols-2 gap-4 mt-4">
-                        <div>
-                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 text-white">Address
-                                <span class="text-red-500">*</span></label>
-                            <input type="text" name="address" id="address"
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="province"
-                                class="block mb-2 text-sm font-medium text-gray-900 text-white">State/Country/Province
-                                <span class="text-red-500">*</span></label>
-                            <input type="text" name="province" id="province"
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="zipcode" class="block mb-2 text-sm font-medium text-gray-900 text-white">Zip
-                                code
-                                <span class="text-red-500">*</span></label>
-                            <input type="text" name="zipcode" id="zipcode"
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 text-white">City
-                                <span class="text-red-500">*</span></label>
-                            <input type="text" name="city" id="city"
-                                class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
-                        </div>
-                    </div>
-                </div>
-                <div v-if="currentTabIndex === 2">
-                    <h4 class="text-xl">Required documentation: Valid ID or National Identity Document</h4>
-                    <p>To complete the verificatioin process you need to send a digitized copy of your ID or passport.
-                    </p>
-                    <div class="max-w-xl mt-4">
-                        <label
-                            class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
-                            <span class="flex items-center space-x-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            <!-- component -->
+            <form class="p-5">
+                <div class="mx-4 p-4">
+                    <div class="flex items-center">
+                        <div class="flex items-center relative">
+                            <div :class="[currentTabIndex >= 0 
+                                ? (currentTabIndex == 0  ? 'border-emerald-600 text-white bg-emerald-600' : 'border-emerald-600 text-emerald-600')
+                                : 'border-gray-300 text-white', 
+                                'rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2']">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark ">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                                 </svg>
-                                <span class="font-medium text-gray-600">
-                                    Drop files to Attach, or
-                                    <span class="text-blue-600 underline">browse</span>
-                                </span>
-                            </span>
-                            <input type="file" name="file_upload" class="hidden">
-                        </label>
+                            </div>
+                            <div :class="[currentTabIndex >= 0 
+                                ? 'text-emerald-600' 
+                                : 'text-gray-500', 
+                                'absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase']">Registration as private user</div>
+                        </div>
+                        <div :class="[currentTabIndex > 0
+                            ? 'border-emerald-600' 
+                            : 'border-gray-300',
+                            'flex-auto border-t-2 transition duration-500 ease-in-out' ]">
+                        </div>
+                        <div class="flex items-center text-white relative">
+                            <div :class="[currentTabIndex >= 1 
+                                ? (currentTabIndex == 1  ? 'border-emerald-600 text-white bg-emerald-600' : 'border-emerald-600 text-emerald-600')
+                                : 'border-gray-300 text-white', 
+                                'rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2']">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus ">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                </svg>
+                            </div>
+                            <div :class="[currentTabIndex >= 1 
+                                ? 'text-emerald-600' 
+                                : 'text-gray-500', 
+                                'absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase']">Address</div>
+                        </div>
+                        <div :class="[currentTabIndex > 1
+                            ? 'border-emerald-600' 
+                            : 'border-gray-300',
+                            'flex-auto border-t-2 transition duration-500 ease-in-out' ]">
+                        </div>
+                        <div class="flex items-center text-gray-500 relative">
+                            <div :class="[currentTabIndex >= 2 
+                                ? (currentTabIndex == 2  ? 'border-emerald-600 text-white bg-emerald-600' : 'border-emerald-600 text-emerald-600')
+                                : 'border-gray-300 text-white', 
+                                'rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2']">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail ">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div :class="[currentTabIndex >= 2 
+                                ? 'text-emerald-600' 
+                                : 'text-gray-500', 
+                                'absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase']">Documentation</div>
+                        </div>
                     </div>
                 </div>
-            </Wizard>
+                <div class="mt-8 p-4">
+                    <div v-if="currentTabIndex === 0">
+                        <h4 class="text-xl">Personal Information</h4>
+                        <p>Insert your personal information</p>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div>
+                                <label for="first-name"
+                                    class="block mb-2 text-sm font-medium text-gray-900 text-white">First
+                                    Name
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" name="first-name" id="first-name"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 text-white">Last
+                                    Name
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" name="last-name" id="last-name"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="country" class="block mb-2 text-sm font-medium text-gray-900 text-white">Country
+                                    of residence
+                                    <span class="text-red-500">*</span></label>
+                                <select
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                                    <option selected>Choose a country</option>
+                                    <option class="bg-red" value="US">United States</option>
+                                    <option class="bg-red" value="CA">Canada</option>
+                                    <option class="bg-red" value="FR">France</option>
+                                    <option class="bg-red" value="DE">Germany</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 text-white">Gender
+                                    <span class="text-red-500">*</span></label>
+                                <select
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                                    <option selected>Male</option>
+                                    <option class="bg-red" value="US">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="currentTabIndex === 1">
+                        <h4 class="text-xl">Address of residence</h4>
+                        <p>Enter your address</p>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div>
+                                <label for="address" class="block mb-2 text-sm font-medium text-gray-900 text-white">Address
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" name="address" id="address"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="province"
+                                    class="block mb-2 text-sm font-medium text-gray-900 text-white">State/Country/Province
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" name="province" id="province"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="zipcode" class="block mb-2 text-sm font-medium text-gray-900 text-white">Zip
+                                    code
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" name="zipcode" id="zipcode"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="city" class="block mb-2 text-sm font-medium text-gray-900 text-white">City
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" name="city" id="city"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="currentTabIndex === 2">
+                        <h4 class="text-xl">Required documentation: Valid ID or National Identity Document</h4>
+                        <p>To complete the verificatioin process you need to send a digitized copy of your ID or passport.
+                        </p>
+                        <div class="max-w-xl mt-4">
+                            <label
+                                class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+                                <span class="flex items-center space-x-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                    </svg>
+                                    <span class="font-medium text-gray-600">
+                                        Drop files to Attach, or
+                                        <span class="text-blue-600 underline">browse</span>
+                                    </span>
+                                </span>
+                                <input type="file" name="file_upload" class="hidden">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex py-2 mt-4">
+                        <button type="button" class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                            hover:bg-gray-200  
+                            bg-gray-100 
+                            text-gray-700 
+                            border duration-200 ease-in-out 
+                            border-gray-600 transition"
+                            @click="() =>currentTabIndex == 0 ? 0 : currentTabIndex--">Previous</button>
+                        <div class="flex-auto flex flex-row-reverse">
+                            <button v-if="currentTabIndex<2" type="button" class="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                                hover:bg-emerald-600  
+                                bg-emerald-600 
+                                text-emerald-100 
+                                border duration-200 ease-in-out 
+                                border-emerald-600 transition"
+                                @click="() => currentTabIndex == 2 ? 2 : currentTabIndex++">Next</button>
+                            <button v-if="currentTabIndex==2" type="submit" class="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+                                hover:bg-emerald-600  
+                                bg-emerald-600 
+                                text-emerald-100 
+                                border duration-200 ease-in-out 
+                                border-emerald-600 transition"
+                                >Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </Card>
     </DefaultLayout>
 </template>
@@ -119,86 +197,19 @@
 import { defineComponent, ref } from "vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import Card from "@/components/core/Card.vue";
-import Wizard from 'form-wizard-vue3';
-import 'form-wizard-vue3/dist/form-wizard-vue3.css';
 
 export default defineComponent({
     name: "Verification",
     data() {
         return {
-            currentTabIndex: 0,
+            currentTabIndex: 2,
         };
-    },
-    methods: {
-        onChangeCurrentTab(index: any, oldIndex: any) {
-            console.log(index, oldIndex);
-            this.currentTabIndex = index;
-        },
-        onTabBeforeChange() {
-            if (this.currentTabIndex === 0) {
-                console.log('First Tab');
-            }
-            console.log('All Tabs');
-        },
-        wizardCompleted() {
-            console.log('Wizard Completed');
-        },
-    },
-    computed: {
-        nextButtonOptions() {
-            return this.currentTabIndex === 2
-                ? {
-                    text: 'Submit',
-                    icon: 'check',
-                    hideIcon: true, // default false but selected for sample
-                    hideText: false, // default false but selected for sample
-                    disabled: true,
-                }
-                : { disabled: false };
-        },
     },
     setup() { },
     components: {
         DefaultLayout,
-        Wizard,
         Card
     }
 });
 
 </script>
-
-<style lang="scss">
-.form-wizard-vue {
-    .fw-step-title.active {
-        color: white;
-    }
-
-    .fw-body-list {
-        border-bottom: 1px solid #6b7280;
-    }
-
-    .fw-list-wrapper-icon {
-        border: 1px solid #22c55e;
-        background: transparent !important;
-    }
-
-    .fw-list-progress-active {
-        background: linear-gradient(90deg, #22c55e 3.88%, #0000 105.52%) !important;
-    }
-
-    .fw-btn {
-        background: transparent;
-        border: 1px solid #15803d;
-        color: #22c55e;
-
-        &:hover {
-            color: white;
-            background-color: #22c55e;
-        }
-    }
-
-    .fw-footer {
-        padding: 10px 60px;
-    }
-}
-</style>

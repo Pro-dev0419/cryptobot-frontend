@@ -31,7 +31,7 @@
 							<input type="apipassword" name="apipassword" id="apipassword" v-model="apiPassword"
 								class="bg-opacity-25 border border-gray-300 sm:text-sm rounded-lg block flex-1 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-gray-500">
 						</div>
-						<button type="submit" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-10 ml-28 border border-green-500 hover:border-transparent rounded-lg">
+						<button type="submit" class="bg-transparent hover:bg-emerald-500 text-emerald-600 font-semibold hover:text-white py-2 px-10 ml-28 border border-emerald-500 hover:border-transparent rounded-lg">
 							Send</button>
 					</form>
 				</div>

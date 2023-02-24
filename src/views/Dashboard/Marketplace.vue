@@ -6,7 +6,7 @@
 					<progress-bar :percent="row.popularity" />
 				</template>
 				<template #item-subscribe="row">
-					<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded-full">
+					<button class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-1 px-4 rounded-full">
 						Subscribe
 					</button>
 				</template>
