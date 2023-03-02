@@ -3,7 +3,7 @@
         <h2 class="text-3xl mb-4">Verification</h2>
         <Card class="!h-fit py-1">
             <!-- component -->
-            <form class="p-5">
+            <form class="p-5" method="post" @submit="sendVerificatioinInfo">
                 <div class="mx-4 p-4">
                     <div class="flex items-center">
                         <div class="flex items-center relative">
@@ -74,21 +74,21 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 text-white">First
                                     Name
                                     <span class="text-red-500">*</span></label>
-                                <input type="text" name="first-name" id="first-name"
-                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500" required>
+                                <input type="text" name="first-name" id="first-name" v-model="personalInfo.firstName"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
                             </div>
                             <div>
                                 <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 text-white">Last
                                     Name
                                     <span class="text-red-500">*</span></label>
-                                <input type="text" name="last-name" id="last-name"
+                                <input type="text" name="last-name" id="last-name" v-model="personalInfo.lastName"
                                     class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
                             </div>
                             <div>
                                 <label for="country" class="block mb-2 text-sm font-medium text-gray-900 text-white">Country
                                     of residence
                                     <span class="text-red-500">*</span></label>
-                                <select
+                                <select v-model="personalInfo.country"
                                     class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
                                     <option selected>Choose a country</option>
                                     <option class="bg-red" value="US">United States</option>
@@ -100,7 +100,7 @@
                             <div>
                                 <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 text-white">Gender
                                     <span class="text-red-500">*</span></label>
-                                <select
+                                <select v-model="personalInfo.gender"
                                     class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
                                     <option selected>Male</option>
                                     <option class="bg-red" value="US">Female</option>
@@ -115,28 +115,28 @@
                             <div>
                                 <label for="address" class="block mb-2 text-sm font-medium text-gray-900 text-white">Address
                                     <span class="text-red-500">*</span></label>
-                                <input type="text" name="address" id="address"
-                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                                <input type="text" name="address" id="address" v-model="personalInfo.address"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500" required>
                             </div>
                             <div>
                                 <label for="province"
                                     class="block mb-2 text-sm font-medium text-gray-900 text-white">State/Country/Province
                                     <span class="text-red-500">*</span></label>
-                                <input type="text" name="province" id="province"
-                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                                <input type="text" name="province" id="province" v-model="personalInfo.state"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500" required>
                             </div>
                             <div>
                                 <label for="zipcode" class="block mb-2 text-sm font-medium text-gray-900 text-white">Zip
                                     code
                                     <span class="text-red-500">*</span></label>
-                                <input type="text" name="zipcode" id="zipcode"
-                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                                <input type="text" name="zipcode" id="zipcode" v-model="personalInfo.zipcode"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500" required>
                             </div>
                             <div>
                                 <label for="city" class="block mb-2 text-sm font-medium text-gray-900 text-white">City
                                     <span class="text-red-500">*</span></label>
-                                <input type="text" name="city" id="city"
-                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500">
+                                <input type="text" name="city" id="city" v-model="personalInfo.city"
+                                    class="bg-opacity-75 border border-gray-300 sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500" required>
                             </div>
                         </div>
                     </div>
@@ -145,22 +145,16 @@
                         <p>To complete the verificatioin process you need to send a digitized copy of your ID or passport.
                         </p>
                         <div class="max-w-xl mt-4">
-                            <label
-                                class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
-                                <span class="flex items-center space-x-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                    </svg>
-                                    <span class="font-medium text-gray-600">
-                                        Drop files to Attach, or
-                                        <span class="text-blue-600 underline">browse</span>
-                                    </span>
-                                </span>
-                                <input type="file" name="file_upload" class="hidden">
-                            </label>
+                            <vue-dropzone
+                                ref="myVueDropzone" 
+                                id="dropzone" 
+                                :options="dropzoneOptions"
+                                v-on:vdropzone-success="dropzoneSuccess"
+                            />
                         </div>
+                    </div>
+                    <div v-if="tabError" class="text-lg text-red-500 mt-3">
+                        Please fill in all fields.
                     </div>
                     <div class="flex py-2 mt-4">
                         <button type="button" class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
@@ -177,7 +171,7 @@
                                 text-emerald-100 
                                 border duration-200 ease-in-out 
                                 border-emerald-600 transition"
-                                @click="() => currentTabIndex == 2 ? 2 : currentTabIndex++">Next</button>
+                                @click="nextStep">Next</button>
                             <button v-if="currentTabIndex==2" type="submit" class="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
                                 hover:bg-emerald-600  
                                 bg-emerald-600 
@@ -195,21 +189,111 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import vueDropzone from 'vue2-dropzone-vue3';
+import Toast from 'v-toast';
+import { fetchWrapper } from '@/shared/fetch-wrapper';
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import Card from "@/components/core/Card.vue";
+import { useAuthStore } from '@/stores';
+
+const baseUrl = 'http://localhost:3003/api';
 
 export default defineComponent({
     name: "Verification",
-    data() {
+    data () {
         return {
-            currentTabIndex: 2,
-        };
+            dropzoneOptions: {
+                url: 'https://httpbin.org/post',
+                maxFiles: 1,
+                acceptedFiles: 'image/*',
+                thumbnailWidth: 150,
+                maxFilesize: 0.5,
+                headers: { "My-Awesome-Header": "header value" }
+            }
+        }
     },
-    setup() { },
+    setup() {
+        const authStore = useAuthStore();
+        const currentTabIndex = ref(0);
+        const tabError = ref(false);
+        const personalInfo = ref({
+            user_id: authStore.user.user.id,
+            firstName : null,
+            lastName: null,
+            country: null,
+            gender: null,
+            address: null,
+            state: null,
+            zipcode: null,
+            city: null,
+            identifyImg: null
+        });
+        const nextStep = () => {
+            switch (currentTabIndex.value) {
+                case 0:
+                    if(personalInfo.value.firstName && personalInfo.value.lastName && personalInfo.value.country && personalInfo.value.gender) {
+                        currentTabIndex.value++;
+                        tabError.value = false;
+                    } else {
+                        tabError.value = true;
+                    }
+                    break;
+                case 1:
+                    if(personalInfo.value.address && personalInfo.value.country && personalInfo.value.zipcode && personalInfo.value.city) {
+                        currentTabIndex.value++;
+                        tabError.value = false;
+                    } else {
+                        tabError.value = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        const dropzoneSuccess = (file: any, response: any) => {
+            personalInfo.value.identifyImg = file.dataURL;
+            console.log(file);
+        }
+
+        const sendVerificatioinInfo = async (e: any) => {
+            e.preventDefault();
+            if(!personalInfo.value.identifyImg) {
+                tabError.value = true;
+            } else {
+                fetchWrapper.post(`${baseUrl}/kyc-verification`, { verificationInfo: personalInfo.value })
+                    .then(res => Toast.success({
+                        message: res.status,
+                        duration: 3000
+                    }))
+                    .catch(error => Toast.error({
+                        message: error,
+                        duration: 3000
+                    }));
+            }
+            
+        }
+        return {
+            currentTabIndex,
+            tabError,
+            personalInfo,
+            nextStep,
+            dropzoneSuccess,
+            sendVerificatioinInfo
+        }
+     },
     components: {
+        vueDropzone,
         DefaultLayout,
         Card
     }
 });
 
 </script>
+<style lang="scss">
+.toast-mask .toast {
+    max-width: 50%;
+    height: auto;
+    white-space: pre-wrap;
+}
+</style>

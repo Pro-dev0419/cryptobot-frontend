@@ -1293,6 +1293,11 @@
     "magic-string" "^0.25.0"
     "string.prototype.matchall" "^4.0.6"
 
+"@swc/helpers@^0.2.13":
+  "integrity" "sha512-wpCQMhf5p5GhNg2MmGKXzUNwxe7zRiCsmqYsamez2beP7mKPCSiu+BjZcdN95yYSzO857kr0VfQewmGpS77nqA=="
+  "resolved" "https://registry.npmjs.org/@swc/helpers/-/helpers-0.2.14.tgz"
+  "version" "0.2.14"
+
 "@tsconfig/node10@^1.0.7":
   "integrity" "sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA=="
   "resolved" "https://registry.npmjs.org/@tsconfig/node10/-/node10-1.0.9.tgz"
@@ -2221,6 +2226,14 @@
   "version" "5.3.0"
   dependencies:
     "is-obj" "^2.0.0"
+
+"dropzone@^6.0.0-beta.2":
+  "integrity" "sha512-k44yLuFFhRk53M8zP71FaaNzJYIzr99SKmpbO/oZKNslDjNXQsBTdfLs+iONd0U0L94zzlFzRnFdqbLcs7h9fQ=="
+  "resolved" "https://registry.npmjs.org/dropzone/-/dropzone-6.0.0-beta.2.tgz"
+  "version" "6.0.0-beta.2"
+  dependencies:
+    "@swc/helpers" "^0.2.13"
+    "just-extend" "^5.0.0"
 
 "dynamic-dedupe@^0.3.0":
   "integrity" "sha512-ssuANeD+z97meYOqd50e04Ze5qp4bPqo8cCkI4TRjZkzAUgIDTrXV1R8QCdINpiI+hw14+rYazvTRdQrz0/rFQ=="
@@ -3249,6 +3262,11 @@
   dependencies:
     "jsonparse" "^1.2.0"
     "through" ">=2.2.7 <3"
+
+"just-extend@^5.0.0":
+  "integrity" "sha512-b+z6yF1d4EOyDgylzQo5IminlUmzSeqR1hs/bzjBNjuGras4FXq/6TrzjxfN0j+TmI0ltJzTNlqXUMCniciwKQ=="
+  "resolved" "https://registry.npmjs.org/just-extend/-/just-extend-5.1.1.tgz"
+  "version" "5.1.1"
 
 "kind-of@^6.0.3":
   "integrity" "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw=="
@@ -4617,6 +4635,11 @@
   "resolved" "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   "version" "1.0.2"
 
+"v-toast@^2.1.7":
+  "integrity" "sha512-C6Dp8FIG6wUMtgDRfhu5MW0lZnT0cu6F4vnxanUU8ezsOpuBQcnLXoTp856heg+LMt/NhgRGcPCD/3DCytYZrg=="
+  "resolved" "https://registry.npmjs.org/v-toast/-/v-toast-2.1.7.tgz"
+  "version" "2.1.7"
+
 "v8-compile-cache-lib@^3.0.1":
   "integrity" "sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg=="
   "resolved" "https://registry.npmjs.org/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz"
@@ -4729,6 +4752,13 @@
     "@vue/runtime-dom" "3.2.45"
     "@vue/server-renderer" "3.2.45"
     "@vue/shared" "3.2.45"
+
+"vue2-dropzone-vue3@^1.1.0":
+  "integrity" "sha512-dAlh8ld9vEnfDeIToxUe2UmPnafc+2G4Bs9hggUaveIYO7D/EolxFkDHd5yLN61wdjOVXTNouCB3bBl4gUZ+qA=="
+  "resolved" "https://registry.npmjs.org/vue2-dropzone-vue3/-/vue2-dropzone-vue3-1.1.0.tgz"
+  "version" "1.1.0"
+  dependencies:
+    "dropzone" "^6.0.0-beta.2"
 
 "vue3-apexcharts@^1.4.1":
   "integrity" "sha512-96qP8JDqB9vwU7bkG5nVU+E0UGQn7yYQVqUUCLQMYWDuQyu2vE77H/UFZ1yI+hwzlSTBKT9BqnNG8JsFegB3eg=="

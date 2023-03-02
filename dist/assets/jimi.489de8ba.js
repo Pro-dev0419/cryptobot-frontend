@@ -1,0 +1,1 @@
+import{_ as e}from"./DefaultLayout.c6723f83.js";import{d as t,o as a,c as o,w as s,a as r,b as _}from"./index.a5400c82.js";const c=_("div",{id:"world-map",style:{width:"600px",height:"400px"}},null,-1),m=t({__name:"jimi",setup(i){return(l,n)=>(a(),o(e,null,{default:s(()=>[r(" Hello World! "),c]),_:1}))}});export{m as default};
